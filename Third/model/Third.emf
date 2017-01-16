@@ -1,0 +1,170 @@
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="third", prefix="third")
+package third;
+
+@Ecore(constraints="NumberOfStartNode NumberOfEndNode")
+@gmf.diagram(foo="bar")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(NumberOfStartNode="self.StartNodes->select(m : SimpleBPMN | m.oclIsTypeOf(Start))->size() < 2", NumberOfEndNode="self.EndNodes->select(m : SimpleBPMN | m.oclIsTypeOf(End))->size() < 2")
+class SimpleBPMN {
+  val Events[*] OwnedEvents;
+  val Task[*] OwnedTasks;
+  val Flow[*] OwnedFlows;
+  val Start[1] StartNodes;
+  val End[1] EndNodes;
+}
+
+abstract class Events extends Elements {
+}
+
+abstract class Task extends Elements {
+
+  @gmf.affixed(foo="bar")
+  val Input valuesin;
+  ref Parameters EReference0;
+
+  @gmf.affixed(foo="bar")
+  val Output valuesout;
+}
+
+abstract class Flow {
+}
+
+@gmf.node(label="name", figure="ellipse", border.width="2", border.style="solid", label.placement="external", size="40,40")
+class Start extends Nodes {
+  attr String name;
+}
+
+@gmf.node(label="name", figure="ellipse", border.width="2", border.style="solid", color="0,0,0", label.placement="external", size="40,40")
+class End extends Nodes {
+  attr String name;
+}
+
+@gmf.node(label="Default,message", label.pattern="{1} {0}", figure="ellipse", border.width="2", border.style="solid", color="0,0,255", label.placement="external", size="40,40")
+class Message extends Events {
+  attr String message;
+  attr String Default = "Wait For";
+}
+
+@gmf.node(label="name", figure="rectangle", label.placement="internal", size="110,70")
+class Normal extends Task {
+  attr String name = "Task Description Here";
+}
+
+@gmf.node(label="name", figure="rectangle", label.placement="internal", size="110,100")
+class Extended extends Task {
+  attr String name = "Task Description Here";
+
+  @gmf.compartment(foo="bar")
+  val Parameters[*] owns;
+}
+
+@Ecore(constraints="NoLoopsFromNormalFlow")
+@gmf.link(target.decoration="arrow", source="from", target="to", incoming="false", label="name")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(NoLoopsFromNormalFlow="self.from <> self.to")
+class NormalF extends Flow {
+  attr String name;
+  ref Elements[1] from;
+  ref Elements[1] to;
+}
+
+abstract class Conditional extends Flow {
+  attr String name;
+}
+
+abstract class Values {
+}
+
+@gmf.node(figure="rectangle", size="20,20", label="name", label.placement="external", label.icon="false")
+class Input extends Values {
+  attr String name;
+}
+
+@gmf.node(figure="rectangle", size="20,20", label="name", label.placement="external", label.icon="false")
+class Output extends Values {
+  attr String name;
+}
+
+@Ecore(constraints="ConditionalINnorvoid")
+@gmf.link(target.decoration="arrow", source="from", target="to", incoming="false", label="name")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(ConditionalINnorvoid="self.cond.size() > 0")
+class ConditionalIN extends Conditional {
+  ref Task to;
+  ref Output from;
+  attr String cond;
+}
+
+@Ecore(constraints="ConditionalINOUTnorvoid")
+@gmf.link(target.decoration="arrow", source="from", target="to", incoming="false", label="name")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(ConditionalINOUTnorvoid="self.cond.size() > 0")
+class ConditionalINOUT extends Conditional {
+  ref Input to;
+  ref Output from;
+  attr String cond;
+}
+
+@Ecore(constraints="IntervalPositive")
+@gmf.node(label="name,Value,Time", label.pattern="{0} {1} {2}", figure="ellipse", border.width="2", border.style="solid", color="0,139,0", label.placement="external", size="40,40")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(IntervalPositive="self.name.size() >= 0")
+class Interval extends Events {
+  attr String name = "Wait";
+  attr int Value;
+  attr TimeSelection Time;
+}
+
+@gmf.node(label="name", figure="ellipse", border.width="2", border.style="solid", color="255,165,0", label.placement="external", size="40,40")
+class Date extends Events {
+  attr String name = "Date";
+}
+
+abstract class Parameters {
+}
+
+@Ecore(constraints="PDescriptionNOTvoid")
+@gmf.node(figure="rectangle", size="90,20", label="name", label.placement="internal", label.icon="false")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(PDescriptionNOTvoid="self.name.size() > 0")
+class Descripcion extends Parameters {
+  attr String name;
+}
+
+@Ecore(constraints="ParticipantETSKNOTvoid")
+@gmf.node(figure="rectangle", size="90,20", label="name", label.placement="internal", label.icon="false")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(ParticipantETSKNOTvoid="self.name.size() > 0")
+class ParticipantETSK extends Parameters {
+  attr String name;
+}
+
+@Ecore(constraints="DatainETSKNOTvoid")
+@gmf.node(figure="rectangle", size="90,20", label="name", label.placement="internal", label.icon="false")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(DatainETSKNOTvoid="self.name.size() > 0")
+class datainETSK extends Parameters {
+  attr String name;
+}
+
+@Ecore(constraints="dataoutETSKNOTvoid")
+@gmf.node(figure="rectangle", size="90,20", label="name", label.placement="internal", label.icon="false")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(dataoutETSKNOTvoid="self.name.size() > 0")
+class dataoutETSK extends Parameters {
+  attr String name;
+}
+
+enum TimeSelection {
+  Seconds = 0;
+  Minutes = 1;
+  Hours = 2;
+  Days = 3;
+  Years = 4;
+}
+
+@Ecore(constraints="DateETSKNOTvoid")
+@gmf.node(figure="rectangle", size="90,20", label="name", label.placement="internal", label.icon="false")
+@"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(DateETSKNOTvoid="self.name.size() > 0")
+class DateETSK extends Parameters {
+  attr String name;
+}
+
+class Nodes extends Elements {
+}
+
+abstract class Elements {
+}
+

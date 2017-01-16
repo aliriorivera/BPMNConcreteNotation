@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="third.presentation.ThirdModelWizardID"
+            name="%_UI_ThirdModelWizard_label"
+            class="third.presentation.ThirdModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ThirdModelFile.gif">
+         <description>%_UI_ThirdModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="third.presentation.ThirdEditorID"
+            name="%_UI_ThirdEditor_label"
+            icon="icons/full/obj16/ThirdModelFile.gif"
+            extensions="third"
+            class="third.presentation.ThirdEditor"
+            contributorClass="third.presentation.ThirdActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

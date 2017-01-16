@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/Third/src" modelPluginID="Third"
+    modelName="Third" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>Third.emf</foreignModel>
+  <genPackages prefix="Third" disposableProviderFactory="true" ecorePackage="Third.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Third.ecore#//TimeSelection">
+      <genEnumLiterals ecoreEnumLiteral="Third.ecore#//TimeSelection/Seconds"/>
+      <genEnumLiterals ecoreEnumLiteral="Third.ecore#//TimeSelection/Minutes"/>
+      <genEnumLiterals ecoreEnumLiteral="Third.ecore#//TimeSelection/Hours"/>
+      <genEnumLiterals ecoreEnumLiteral="Third.ecore#//TimeSelection/Days"/>
+      <genEnumLiterals ecoreEnumLiteral="Third.ecore#//TimeSelection/Years"/>
+    </genEnums>
+    <genClasses ecoreClass="Third.ecore#//SimpleBPMN">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//SimpleBPMN/OwnedEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//SimpleBPMN/OwnedTasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//SimpleBPMN/OwnedFlows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//SimpleBPMN/StartNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//SimpleBPMN/EndNodes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Third.ecore#//Events"/>
+    <genClasses image="false" ecoreClass="Third.ecore#//Task">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//Task/valuesin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//Task/EReference0"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//Task/valuesout"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Third.ecore#//Flow"/>
+    <genClasses ecoreClass="Third.ecore#//Start">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Start/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//End">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//End/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Message/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Message/Default"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Normal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Normal/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Extended">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Extended/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Third.ecore#//Extended/owns"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//NormalF">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//NormalF/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//NormalF/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//NormalF/to"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Third.ecore#//Conditional">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Conditional/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Third.ecore#//Values"/>
+    <genClasses ecoreClass="Third.ecore#//Input">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Input/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Output">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Output/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//ConditionalIN">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//ConditionalIN/to"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//ConditionalIN/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//ConditionalIN/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//ConditionalINOUT">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//ConditionalINOUT/to"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Third.ecore#//ConditionalINOUT/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//ConditionalINOUT/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Interval">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Interval/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Interval/Value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Interval/Time"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Date">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Date/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Third.ecore#//Parameters"/>
+    <genClasses ecoreClass="Third.ecore#//Descripcion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//Descripcion/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//ParticipantETSK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//ParticipantETSK/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//datainETSK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//datainETSK/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//dataoutETSK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//dataoutETSK/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//DateETSK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Third.ecore#//DateETSK/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Third.ecore#//Nodes"/>
+    <genClasses image="false" ecoreClass="Third.ecore#//Elements"/>
+  </genPackages>
+</genmodel:GenModel>

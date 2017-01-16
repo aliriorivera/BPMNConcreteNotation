@@ -1,0 +1,7 @@
+# Tracing options for the Third.diagram plug-in
+
+# Common issues
+Third.diagram/debug=false
+
+# Visual IDs
+Third.diagram/debug/visualID=false
